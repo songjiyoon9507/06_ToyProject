@@ -1,0 +1,7 @@
+INDEX VERSION 1.134
+C:\workspace\06_ToyProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3139647042.index
+\TodoLsit\src\main\java
+C:\workspace\06_ToyProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2733043092.index
+\EnglishDictionary\src\main\java
+C:\workspace\06_ToyProject\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4125385882.index
+\TodoLsit\src\main\java
