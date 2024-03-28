@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!-- 로그인 같은 이름, 전화번호 SELECT문 -->
+	<entry key="login">
+		SELECT NAME, PHONE
+		FROM RESERVE_PERSON
+		WHERE NAME = ?
+		AND PHONE = ?
+	</entry>
+	
+	<entry key="signup">
+		INSERT INTO RESERVE_PERSON(NAME, PHONE)
+		VALUES(?, ?)
+	</entry>
+	
+	<entry key="reserveInfo">
+		SELECT BUS_DEPARTURES, BUS_ARRIVALS, BUS_DEPARTURE_TIME, BUS_NO, SEAT_NO
+		FROM RESERVE_PERSON
+		WHERE NAME = ?
+		AND PHONE = ?
+	</entry>
+</properties>
