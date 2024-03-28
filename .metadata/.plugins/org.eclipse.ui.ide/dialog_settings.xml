@@ -6,13 +6,14 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\workspace\06_ToyProject"/>
 			<item value="C:\workspace\05_Server\TodoList"/>
 			<item value="C:\workspace\06_ToyProject\EnglishDictionary"/>
 			<item value="C:\workspace\05_Server\TodoLsit"/>
 			<item value="C:\workspace\05_Servlet\TodoLsit"/>
 		</list>
 		<section name="SmartImportWizard.dialogBounds">
-			<item key="DIALOG_X_ORIGIN" value="129"/>
+			<item key="DIALOG_X_ORIGIN" value="286"/>
 			<item key="DIALOG_Y_ORIGIN" value="186"/>
 			<item key="DIALOG_WIDTH" value="888"/>
 			<item key="DIALOG_HEIGHT" value="629"/>

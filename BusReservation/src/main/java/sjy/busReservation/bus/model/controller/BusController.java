@@ -51,12 +51,22 @@ public class BusController extends HttpServlet {
 			
 			String inputBusNo = req.getParameter("inputBusNo");
 			
+			System.out.println(inputBusNo);
+			
 			BusSeatService service = new BusSeatService();
+			
+			HttpSession session = req.getSession();
+			
+			session.setAttribute("busNo", inputBusNo);
 			
 			List<BusSeat> seatList = service.showSeat(inputBusNo);
 			
+			
+			
 			req.setAttribute("seatList", seatList);
-
+			
+			req.getRequestDispatcher("WEB-INF/views/reserveSeat.jsp").forward(req, resp);
+			
 		} catch (Exception e) {
 			System.out.println("[버스 예약 중 오류 발생]");
 			e.printStackTrace();

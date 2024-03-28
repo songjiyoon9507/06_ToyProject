@@ -34,6 +34,8 @@
 			</tr>
 		</c:forEach>
 		
+		</table>
+		
 		<form action="/reserveBus" method="post">
 			<p>예약할 버스 번호</p>
 			<input type="number" name="inputBusNo">
@@ -43,7 +45,6 @@
 				<a>예약 종료</a>			
 			</div>
 		</form>
-	</table>
 		
 	</main>
 </body>

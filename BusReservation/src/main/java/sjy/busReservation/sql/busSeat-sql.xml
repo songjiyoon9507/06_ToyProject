@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="showSeat">
+		SELECT BUS_NO, SEAT_NO
+		FROM BUS_SEAT
+		WHERE SEAT_RESERVATION = 'N'
+		AND BUS_NO = ?
+	</entry>
+</properties>

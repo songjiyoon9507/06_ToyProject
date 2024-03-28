@@ -19,7 +19,7 @@ public class BusSeatService {
 	public List<BusSeat> showSeat(String inputBusNo) throws Exception {
 		Connection conn = getConnection();
 		
-		List<BusSeat> seatList = dao.showSeat(inputBusNo);
+		List<BusSeat> seatList = dao.showSeat(conn, inputBusNo);
 		
 		close(conn);
 		
