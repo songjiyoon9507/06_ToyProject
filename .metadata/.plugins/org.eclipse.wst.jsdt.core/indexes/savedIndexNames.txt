@@ -1,8 +1,7 @@
 INDEX VERSION 1.4+C:\workspace\06_ToyProject\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-4056572476.index
 3154714373.index
-1135980201.index
-579363090.index
 2736932569.index
-3887371920.index
 2148006690.index
+579363090.index
+1135980201.index
+3887371920.index
