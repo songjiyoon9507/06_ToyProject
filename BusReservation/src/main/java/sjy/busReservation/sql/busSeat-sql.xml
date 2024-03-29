@@ -8,4 +8,22 @@
 		WHERE SEAT_RESERVATION = 'N'
 		AND BUS_NO = ?
 	</entry>
+	
+	<!-- 입력 받은 버스 번호, 좌석 번호 예약됨 표시 -->
+	<entry key="update">
+		UPDATE BUS_SEAT SET
+		SEAT_RESERVATION = 'Y'
+		WHERE SEAT_RESERVATION = 'N'
+		AND BUS_NO = ?
+		AND SEAT_NO = ?
+	</entry>
+	
+	<!-- 입력 받은 버스 번호, 좌석 번호 예약 취소 표시 -->
+	<entry key="backReserve">
+		UPDATE BUS_SEAT SET
+		SEAT_RESERVATION = 'N'
+		WHERE SEAT_RESERVATION = 'Y'
+		AND BUS_NO = ?
+		AND SEAT_NO = ?
+	</entry>
 </properties>

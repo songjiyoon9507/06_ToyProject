@@ -8,6 +8,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>버스 예약</title>
+	
+	<link rel="stylesheet" href="/resources/css/reserve.css">
 </head>
 <body>
 	<main>
@@ -41,10 +43,19 @@
 			<input type="number" name="inputBusNo">
 			
 			<div>
-				<button>예약하기</button>
-				<a>예약 종료</a>			
+				<button>예약하기</button>				
+			</div>
+			
+			<div class="out">
+				<a href="/reserveOut">예약 종료</a>			
 			</div>
 		</form>
+		
+		<c:if test="${not empty sessionScope.message}">
+		${message}
+		
+		<c:remove var="message" scope="session"/>
+	</c:if>
 		
 	</main>
 </body>

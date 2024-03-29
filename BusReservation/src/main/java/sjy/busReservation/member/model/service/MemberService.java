@@ -61,6 +61,54 @@ public class MemberService {
 		return reserveInfo;
 	}
 
+	/** 중복되는 전화번호 있는지 검사
+	 * @param inputPhone
+	 * @return check
+	 * @throws Exception
+	 */
+	public int check(String inputPhone) throws Exception {
+		Connection conn = getConnection();
+		
+		int check = dao.check(conn, inputPhone);
+		
+		close(conn);
+		
+		return check;
+	}
+
+	/** 예약 정보 넣어주는 서비스
+	 * @param member
+	 * @param busNo
+	 * @param seatNo
+	 * @return result
+	 * @throws Excpetion
+	 */
+	public int updateReserve(Member member, String busNo, String seatNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.updateReserve(conn, member, busNo,seatNo);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		return result;
+	}
+
+	/** 핸드폰 번호 일치하는 사람 예약 정보 날려주는 서비스
+	 * @param phoneNum
+	 * @return memResult
+	 */
+	public int deleteReserve(String phoneNum) throws Exception {
+		Connection conn = getConnection();
+		
+		int memResult = dao.deleteReserve(conn, phoneNum);
+		
+		if(memResult > 0) commit(conn);
+		else rollback(conn);
+		
+		return memResult;
+	}
+
 
 
 

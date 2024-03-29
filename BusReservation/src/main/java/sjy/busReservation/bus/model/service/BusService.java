@@ -22,4 +22,19 @@ public class BusService {
 		return busList;
 	}
 
+	/** 입력받은 버스번호가 존재하는지 조회하는 서비스
+	 * @param inputBusNo
+	 * @return count
+	 * @throws Exception
+	 */
+	public int select(String inputBusNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int count = dao.select(conn, inputBusNo);
+		
+		close(conn);
+		
+		return count;
+	}
+
 }

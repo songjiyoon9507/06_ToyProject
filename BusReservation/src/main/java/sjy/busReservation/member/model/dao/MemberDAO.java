@@ -46,6 +46,7 @@ public class MemberDAO {
 		Member loginMember = null;
 		
 		try {
+			
 			String sql = prop.getProperty("login");
 			
 			pstmt = conn.prepareStatement(sql);
@@ -85,7 +86,10 @@ public class MemberDAO {
 		
 		return loginMember;
 	}
-
+	
+	// 회원 가입 전에 중복되는 전화번호 있는지 먼저 확인
+	
+	
 	public int signup(Connection conn, Member member) throws Exception {
 		int result = 0;
 		
@@ -139,6 +143,89 @@ public class MemberDAO {
 		}
 		
 		return reserveInfo;
+	}
+
+	/** 중복되는 전화번호 있는지 검사
+	 * @param conn
+	 * @param inputPhone
+	 * @return check
+	 * @throws Exception
+	 */
+	public int check(Connection conn, String inputPhone) throws Exception {
+		int check = -1;
+		
+		try {
+			String sql = prop.getProperty("check");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, inputPhone);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				check = rs.getInt(1);
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return check;
+	}
+
+	/** 예약 정보 넣어주는 DAO
+	 * @param conn
+	 * @param member
+	 * @param busNo
+	 * @param seatNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateReserve(Connection conn, Member member, String busNo, String seatNo) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateReserve");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, busNo);
+			pstmt.setString(2, busNo);
+			pstmt.setString(3, busNo);
+			pstmt.setString(4, busNo);
+			pstmt.setString(5, seatNo);
+			pstmt.setString(6, member.getPhoneNum());
+			
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/** 예약 정보 날려주는 DAO
+	 * @param conn
+	 * @param phoneNum
+	 * @return memResult
+	 * @throws Exception
+	 */
+	public int deleteReserve(Connection conn, String phoneNum) throws Exception {
+		int memResult = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteReserve");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, phoneNum);
+			
+			memResult = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return memResult;
 	}
 
 

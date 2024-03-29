@@ -61,4 +61,34 @@ public class BusDAO {
 		return busList;
 	}
 
+	/** 입력 받은 버스가 존재하는지 조회
+	 * @param conn
+	 * @param inputBusNo
+	 * @return count
+	 * @throws Exception
+	 */
+	public int select(Connection conn, String inputBusNo) throws Exception {
+		int count = -1;
+		
+		try {
+			String sql = prop.getProperty("select");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, inputBusNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return count;
+	}
+
 }

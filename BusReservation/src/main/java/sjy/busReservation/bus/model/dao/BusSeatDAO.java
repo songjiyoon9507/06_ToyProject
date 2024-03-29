@@ -71,4 +71,47 @@ public class BusSeatDAO {
 		return seatList;
 	}
 
+	public int update(Connection conn, String busNo, String seatNo) throws Exception {
+		int reserve = 0;
+		
+		try {
+			String sql = prop.getProperty("update");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, busNo);
+			pstmt.setString(2, seatNo);
+			
+			reserve = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return reserve;
+	}
+
+	/** 예약 변경 할 때 기존 예약 정보 좌석 변경
+	 * @param conn
+	 * @param busNo
+	 * @param reserveSeatNo
+	 * @return checkResult
+	 */
+	public int backReserve(Connection conn, int busNo, int reserveSeatNo) throws Exception {
+		int checkResult = 0;
+		
+		try {
+			String sql = prop.getProperty("backReserve");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, busNo);
+			pstmt.setInt(2, reserveSeatNo);
+			
+			checkResult = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		
+		return checkResult;
+	}
+
 }

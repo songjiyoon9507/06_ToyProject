@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="sjy.busReservation.member.model.dao.MemberDAO"/>
-    <fullyQualifiedTypeName name="sjy.busReservation.bus.model.service.BusService"/>
     <fullyQualifiedTypeName name="sjy.busReservation.bus.model.dto.Bus"/>
     <fullyQualifiedTypeName name="sjy.busReservation.bus.model.dao.BusDAO"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
-    <fullyQualifiedTypeName name="sjy.busReservation.member.model.service.MemberService"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="lombok.ToString"/>
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
-    <fullyQualifiedTypeName name="sjy.busReservation.bus.model.service.BusSeatService"/>
     <fullyQualifiedTypeName name="sjy.busReservation.bus.model.dao.BusSeatDAO"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.beans.Statement"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
@@ -24,6 +20,10 @@
     <fullyQualifiedTypeName name="sjy.busReservation.bus.model.dto.BusSeat"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="sjy.busReservation.common.JDBCTemplate"/>
+    <fullyQualifiedTypeName name="sjy.busReservation.bus.model.service.BusSeatService"/>
+    <fullyQualifiedTypeName name="sjy.busReservation.member.model.service.MemberService"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="sjy.busReservation.bus.model.service.BusService"/>
     <fullyQualifiedTypeName name="jakarta.servlet.annotation.WebServlet"/>
     <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServlet"/>
     <fullyQualifiedTypeName name="jakarta.servlet.http.HttpSession"/>

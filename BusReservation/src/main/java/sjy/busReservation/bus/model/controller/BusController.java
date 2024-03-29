@@ -50,22 +50,54 @@ public class BusController extends HttpServlet {
 		try {
 			
 			String inputBusNo = req.getParameter("inputBusNo");
-			
-			System.out.println(inputBusNo);
-			
-			BusSeatService service = new BusSeatService();
-			
 			HttpSession session = req.getSession();
 			
-			session.setAttribute("busNo", inputBusNo);
+			// 입력된 버스 번호가 존재하지 않으면 안 뜸
+			BusService bs = new BusService();
 			
-			List<BusSeat> seatList = service.showSeat(inputBusNo);
+			int count = bs.select(inputBusNo);
+			
+			if(count > 0) {
+				// 버스 번호 존재할 때
+				if(inputBusNo == null) {
+					session.setAttribute("message", "버스 번호를 입력해주세요");
+					
+				} else {
+					
+					System.out.println(inputBusNo);
+					
+					BusSeatService service = new BusSeatService();
+					
+					
+					session.setAttribute("busNo", inputBusNo);
+					
+					List<BusSeat> seatList = service.showSeat(inputBusNo);
+					
+					req.setAttribute("seatList", seatList);
+					
+					req.getRequestDispatcher("WEB-INF/views/reserveSeat.jsp").forward(req, resp);
+				}
+				
+			} else {
+				session.setAttribute("message", "존재하지 않는 버스 번호입니다.");
+				
+				resp.sendRedirect(req.getHeader("referer"));
+			}
 			
 			
 			
-			req.setAttribute("seatList", seatList);
+
+
 			
-			req.getRequestDispatcher("WEB-INF/views/reserveSeat.jsp").forward(req, resp);
+
+//			String busNo = session.reserveInfo.busNo;
+//			
+//			${sessionScope.reserveInfo.busNo}번 버스 <br>
+//			${sessionScope.reserveInfo.reserveSeatNo}번 좌석<br>
+//			${sessionScope.reserveInfo.arrivals}행<br>
+//			${sessionScope.reserveInfo.departureTime} 에 출발 예정<br>
+			
+			
 			
 		} catch (Exception e) {
 			System.out.println("[버스 예약 중 오류 발생]");

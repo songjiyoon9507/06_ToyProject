@@ -29,6 +29,9 @@ public class SignupController extends HttpServlet {
 			String inputName = req.getParameter("inputName");
 			String inputPhone = req.getParameter("inputPhone");
 			
+			
+			
+			
 			Member member = new Member();
 			
 			member.setName(inputName);
@@ -36,16 +39,29 @@ public class SignupController extends HttpServlet {
 			
 			MemberService service = new MemberService();
 			
-			int result = service.signup(member);
-			
 			HttpSession session = req.getSession();
+			// 전화번호 겹치는 게 있는지 검사
+			// 전화번호가 primary key 라서 중복되면 에러 뜸
+			int check = service.check(inputPhone);
 			
-			if(result > 0) {
-				session.setAttribute("message", "회원가입 완료");
-				resp.sendRedirect("/");
-			} else {
-				session.setAttribute("message", "회원가입 오류");
+			System.out.println(check);
+			
+			if (check > 0) {
+				session.setAttribute("message", "이미 가입된 번호입니다.");
 				resp.sendRedirect(req.getHeader("referer"));
+			} else if (check == -1) {
+				System.out.println("SQL 조회 자체가 안된 거");
+			} else {
+				
+				int result = service.signup(member);
+				
+				if(result > 0) {
+					session.setAttribute("message", "회원가입 완료");
+					resp.sendRedirect("/");
+				} else {
+					session.setAttribute("message", "회원가입 오류");
+					resp.sendRedirect(req.getHeader("referer"));
+				}
 			}
 			
 		} catch (Exception e) {

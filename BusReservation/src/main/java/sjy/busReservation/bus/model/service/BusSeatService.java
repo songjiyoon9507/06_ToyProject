@@ -26,4 +26,38 @@ public class BusSeatService {
 		return seatList;
 	}
 
+	/** 예약 정보 업데이트
+	 * @param busNo
+	 * @param seatNo
+	 * @return reserve
+	 * @throws Exception
+	 */
+	public int update(String busNo, String seatNo) throws Exception{
+		Connection conn = getConnection();
+		
+		int reserve = dao.update(conn, busNo, seatNo);
+		
+		if(reserve > 0) commit(conn);
+		else rollback(conn);
+		
+		return reserve;
+	}
+
+	/** 예약 변경 누르면 기존에 예약 돼있던 버스 정보 바꿔주는 서비스
+	 * @param busNo
+	 * @param reserveSeatNo
+	 * @return checkResult
+	 * @throws Exception
+	 */
+	public int backReserve(int busNo, int reserveSeatNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int checkResult = dao.backReserve(conn, busNo, reserveSeatNo);
+		
+		if(checkResult > 0) commit(conn);
+		else rollback(conn);
+		
+		return checkResult;
+	}
+
 }
